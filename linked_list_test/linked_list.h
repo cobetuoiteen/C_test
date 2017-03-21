@@ -1,13 +1,18 @@
 //author : Truong Huynh Tien
 //date : 2017_03_20
 
+//==========================================================================================
 typedef struct element
 {
 	int value;
 	element *pNext = NULL;
 }
 
+//==========================================================================================
+
 typedef element *linked_list
+
+//==========================================================================================
 
 int init(linked_list &pListA)
 {
@@ -15,10 +20,14 @@ int init(linked_list &pListA)
 	// L tro toi NULL
 }
 
+//==========================================================================================
+
 bool isEmpty(linked_list pListA)
 {
 	return (pListA == NULL);
 }
+
+//==========================================================================================
 
 int add_Node_first(linked_list &pListA, int value)
 {
@@ -40,6 +49,8 @@ int add_Node_first(linked_list &pListA, int value)
 	}
 	return 0;
 }
+
+//==========================================================================================
 
 int add_Node(linked_list &pListA, int value, int order)
 {
@@ -71,11 +82,15 @@ int add_Node(linked_list &pListA, int value, int order)
 	return 0;
 }
 
+//==========================================================================================
+
 int delete_first_Node(linked_list &pListA, int &x)
 {
 	x = pListA.value; // value cua node bi xoa se duoc gan vao x
 	pListA = pListA->pNext;
 }
+
+//==========================================================================================
 
 int delete_Node_k(linked_list pListA, int order, int &x)
 {
@@ -106,10 +121,26 @@ int delete_Node_k(linked_list pListA, int order, int &x)
 	return 0;
 }
 
+//==========================================================================================
+
 int reverse_List(linked_list pListA)
 {
-	//TODO	
+	if(pListA != NULL)
+	{
+		Node *pTemp_1 = NULL, *PTemp_2 = pListA->pNext;
+		while(pTemp_2 != NULL)
+		{
+			pListA->pNext = pTemp_1;
+			pTemp_1 = pListA;
+			pListA = pTemp_2;
+			pTemp_2 = pTemp_2->pNext;
+		}
+		pListA->pNext = pTemp_1;
+	}
+	return 0;
 }
+
+//==========================================================================================
 
 int lengh_with_loop(linked_list pListA)
 {
